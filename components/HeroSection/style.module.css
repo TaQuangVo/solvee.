@@ -1,0 +1,132 @@
+.container {
+  width: 100%;
+}
+
+/*intro*/
+.intro {
+  width: 100%;
+  height: 100vh;
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--intro-background-color);
+  z-index: 99;
+}
+.intro h3 {
+  font-size: calc(100vw / 15);
+  font-size: min(calc(100vw / 9), 7rem);
+  font-family: var(--primary-font);
+  font-weight: 400;
+  color: var(--intro-background-color);
+}
+
+/*titles*/
+.titles {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--intro-title-background); /*rgb(49,49,49)*/
+  position: relative;
+}
+
+.titles h2 {
+  font-family: var(--primary-font);
+  font-weight: 600;
+  text-align: center;
+  font-size: calc(100vh / 20);
+  color: var(--primary-color);
+  color: var(--intro-title-text-color); /*rgb(0, 0, 0)*/
+}
+/*
+.titles h2:nth-child(1),
+.titles h2:nth-child(2),
+.titles h2:nth-child(3),
+.titles h2:nth-child(4) {
+  color: black;
+  -webkit-text-fill-color: #f6f6f6; 
+  -webkit-text-stroke-width: 2px;
+  -webkit-text-stroke-color: black;
+}
+*/
+
+/*subscription*/
+.subscription {
+  font-family: var(--primary-font);
+  position: relative;
+}
+.subsWrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.subsWrap:nth-child(1) {
+  padding-top: 20vh;
+}
+.subscription h3 {
+  font-weight: 400;
+  font-size: 1rem;
+  color: var(--secondary-color);
+  margin-bottom: 0.7rem;
+}
+.subscription h3 span {
+  font-weight: 500;
+  color: var(--primary-color);
+}
+.subscription h1 {
+  font-weight: 400;
+  font-size: 1.5rem;
+  color: var(--secondary-color);
+}
+.subscription h1 span {
+  font-weight: 600;
+  color: var(--primary-color);
+}
+.subscription p {
+  max-width: 30rem;
+  font-weight: 400;
+  font-size: 0.9rem;
+  color: var(--secondary-color);
+  margin: 0.4rem 0 1rem 0;
+}
+.subscription button {
+  font-weight: 300;
+  font-size: 0.8rem;
+  padding: 0.2rem 0.7rem;
+  border: none;
+  outline: none;
+  background-color: var(--primary-color);
+  color: var(--primary-contrass-color);
+  cursor: pointer;
+  transition: all 300ms ease-in-out;
+  font-family: var(--primary-font);
+}
+.subSpace {
+  height: 10vh;
+}
+.trailing {
+  height: 10rem;
+  width: 100vw;
+}
+
+@media (max-width: 1500px) {
+  .subscription p {
+    max-width: 25rem;
+  }
+}
+@media (max-width: 1600px) {
+  .subsWrap {
+    padding: 0 2rem 2rem 2rem;
+    display: block;
+  }
+}
+@media (max-width: 600px) {
+  .subsWrap {
+    padding: 0 1rem 1rem 1rem;
+  }
+  .subscription p {
+    max-width: 18rem;
+  }
+}

@@ -6,11 +6,84 @@ body {
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 }
 
+:root {
+  --primary-font: "Genos", sans-serif;
+  --secondary-font: "Lora", serif;
+  --third-font: "Poppins", sans-serif;
+
+  --intro-background-color: rgb(49, 49, 49); /*rgb(218, 218, 218)*/
+  --intro-text-color: rgb(80, 80, 80); /*rgb(255, 255, 255)*/
+
+  --intro-title-background: rgb(49, 49, 49); /*#f6f6f6*/
+  --intro-title-text-color: rgb(211, 211, 211); /*rgb(0, 0, 0)*/
+
+  --background-color: rgb(92, 92, 92); /*rgb(255, 255, 255)*/
+
+  --primary-color: rgb(255, 255, 255); /*rgb(0, 0, 0)*/
+  --primary-contrass-color: rgb(82, 82, 82); /*rgb(204, 204, 204)*/
+  --secondary-color: rgb(197, 197, 197); /*rgb(83, 83, 83)*/
+  --deco-color: rgb(221, 0, 0);
+
+  font-size: 30px;
+}
+
 a {
   color: inherit;
   text-decoration: none;
 }
 
 * {
+  padding: 0;
+  margin: 0;
   box-sizing: border-box;
+}
+
+/* hide scrollbar but allow scrolling */
+* {
+  -ms-overflow-style: none; /* for Internet Explorer, Edge */
+  scrollbar-width: none; /* for Firefox */
+  overflow-y: scroll;
+}
+
+*::-webkit-scrollbar {
+  display: none; /* for Chrome, Safari, and Opera */
+}
+
+.main-canvas {
+  width: 100%;
+  height: 100vh;
+  position: fixed;
+  pointer-events: none;
+  z-index: -1;
+  background-color: var(--background-color);
+}
+.hiddenOverflow {
+  overflow: hidden;
+  height: -webkit-fill-available;
+}
+
+@media (max-width: 2000px) {
+  :root {
+    font-size: 26px;
+  }
+}
+@media (max-width: 1700px) {
+  :root {
+    font-size: 23px;
+  }
+}
+@media (max-width: 1000px) {
+  :root {
+    font-size: 19px;
+  }
+}
+@media (max-width: 600px) {
+  :root {
+    font-size: 19px;
+  }
+}
+@media (max-width: 390px) {
+  :root {
+    font-size: 18px;
+  }
 }

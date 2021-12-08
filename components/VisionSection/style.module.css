@@ -1,0 +1,120 @@
+.container {
+  height: 100vh;
+  height: -webkit-fill-available;
+  width: 100vw;
+  --scaler: 30px;
+  position: relative;
+  pointer-events: none;
+  overflow: visible;
+}
+.scroller {
+  height: 100%;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  position: relative;
+  position: absolute;
+  top: 0;
+  left: 65%; /*65*/
+}
+.contentWraper {
+  display: flex;
+  margin: 2rem;
+  overflow: visible;
+}
+.header {
+  font-size: 4rem;
+  font-family: var(--primary-font);
+  height: 20rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  margin-right: 16rem;
+  overflow: visible;
+}
+.header > span {
+  color: var(--secondary-color);
+  line-height: 2.5rem;
+  font-weight: 500;
+  font-size: 3rem;
+  overflow: visible;
+}
+.header h2 {
+  line-height: 3.7rem;
+  color: var(--primary-color);
+  overflow: visible;
+}
+.header h2 span {
+  color: var(--deco-color);
+}
+
+/*visionIcon*/
+
+.visionItem {
+  margin-right: 9rem;
+  position: relative;
+  overflow: visible;
+}
+.imageCover {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  height: 20rem;
+  width: 20rem;
+  overflow: hidden;
+}
+.imageCover img {
+  height: 100%;
+  visibility: hidden;
+}
+.visionItem h3 {
+  font-family: var(--primary-font);
+  color: var(--primary-color);
+  font-size: 1.7rem;
+}
+.visionItem p {
+  font-family: var(--primary-font);
+  color: var(--secondary-color);
+  font-size: 1rem;
+}
+.visionItem span {
+  font-family: var(--primary-font);
+  color: var(--deco-color);
+  font-size: 1rem;
+  text-decoration: underline;
+  opacity: 0.6;
+  cursor: pointer;
+  transition: all 200ms ease-in-out;
+  pointer-events: all;
+}
+.visionItem span:hover {
+  opacity: 1;
+}
+.visionItem .line {
+  position: absolute;
+  right: 0%;
+  bottom: -40%;
+  width: 1px;
+  height: 11rem;
+  background-color: var(--secondary-color);
+  opacity: 0.7;
+}
+.scroller .footer {
+  position: absolute;
+  left: 0%;
+  bottom: 0%;
+}
+.scroller .footer h5 {
+  font-family: var(--primary-font);
+  color: var(--secondary-color);
+  font-weight: 500;
+  font-size: 1.1rem;
+  margin: 2rem 2rem;
+}
+.visionPadding {
+  position: relative;
+  z-index: -1;
+  pointer-events: none;
+  background-color: transparent;
+}
