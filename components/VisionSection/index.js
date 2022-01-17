@@ -5,6 +5,7 @@ import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import {localScrollTriggerContext} from "../../context/localScrollTriggerContext"
 gsap.registerPlugin(ScrollTrigger);
 
+
 export default function index() {
 
     const {scroll, isReady} = useContext(localScrollTriggerContext)
@@ -30,14 +31,15 @@ export default function index() {
                      scrub:true,
                      pin: ".vision-scroller",
                      start:"0% 0%",
-                     end:"100% 100%"
-                }
+                     end:"100% 100%",
+                     id:"vistionTrigger",
+                },
             }).to(".vision-scroller", {
                 x: -sectionLength,
-                ease:"none"
+                ease:"none",
+                overwrite: true,
             })
 
-            scroll.update()
 
     },[isReady])
 
@@ -83,6 +85,11 @@ export default function index() {
                             </div>
                             <span className={style.line}></span>
                         </div>
+                        <div className={style.titles}>
+                            <h2>We <span>Design.</span></h2>
+                            <h2>We <span>Develop.</span></h2>
+                            <h2>We <span>Inspire.</span> </h2>
+                        </div>
                     </div>
                     <div className={style.footer}>
                         <h5>Creative  -  Inovative  -  Accessible</h5>
@@ -93,3 +100,5 @@ export default function index() {
         </section>
     )
 }
+
+

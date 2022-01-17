@@ -101,7 +101,7 @@ export default function PlaneMesh() {
                 scroller:".scrollContainer",
                 scrub:true,
                 start:"0% 100%",
-                end:"100% 100%"
+                end:"100% 100%",
             }
         }).to(planeMaterialRef.current.uniforms.uTransistionProgress, {
             value: 1
@@ -116,7 +116,7 @@ export default function PlaneMesh() {
                 trigger:trigger,
                 scrub:true,
                 start:"50% 100%",
-                end:"100% 100%"
+                end:"100% 100%",
             }
         }
         const solutionFadeout = gsap.timeline({
@@ -186,7 +186,7 @@ export default function PlaneMesh() {
                 scrollTrigger:{
                     scroller:".scrollContainer",
                     trigger:el,
-                    start:"100% 100%",
+                    start:"100% 110%",
                 }
             }).from(el.querySelectorAll("div"),{
                 duration:.3,

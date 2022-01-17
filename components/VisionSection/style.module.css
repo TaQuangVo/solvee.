@@ -15,32 +15,32 @@
   position: relative;
   position: absolute;
   top: 0;
-  left: 65%; /*65*/
+  left: calc(100% - var(--scaler) * 30); /*65*/
 }
 .contentWraper {
   display: flex;
-  margin: 2rem;
+  margin: calc(var(--scaler) * 2);
   overflow: visible;
 }
 .header {
-  font-size: 4rem;
+  font-size: calc(var(--scaler) * 4);
   font-family: var(--primary-font);
-  height: 20rem;
+  height: calc(var(--scaler) * 20);
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  margin-right: 16rem;
+  margin-right: calc(var(--scaler) * 16);
   overflow: visible;
 }
 .header > span {
   color: var(--secondary-color);
-  line-height: 2.5rem;
+  line-height: calc(var(--scaler) * 2.5);
   font-weight: 500;
-  font-size: 3rem;
+  font-size: calc(var(--scaler) * 3);
   overflow: visible;
 }
 .header h2 {
-  line-height: 3.7rem;
+  line-height: calc(var(--scaler) * 3.7);
   color: var(--primary-color);
   overflow: visible;
 }
@@ -51,7 +51,7 @@
 /*visionIcon*/
 
 .visionItem {
-  margin-right: 9rem;
+  margin-right: calc(var(--scaler) * 9);
   position: relative;
   overflow: visible;
 }
@@ -60,28 +60,29 @@
   justify-content: center;
   align-items: center;
   position: relative;
-  height: 20rem;
-  width: 20rem;
+  height: calc(var(--scaler) * 20);
+  width: calc(var(--scaler) * 20);
+  visibility: hidden;
   overflow: hidden;
 }
 .imageCover img {
   height: 100%;
-  visibility: hidden;
 }
 .visionItem h3 {
   font-family: var(--primary-font);
   color: var(--primary-color);
-  font-size: 1.7rem;
+  font-size: calc(var(--scaler) * 1.7);
 }
 .visionItem p {
   font-family: var(--primary-font);
   color: var(--secondary-color);
-  font-size: 1rem;
+  font-size: calc(var(--scaler) * 1);
+  max-width: calc(var(--scaler) * 17);
 }
 .visionItem span {
   font-family: var(--primary-font);
   color: var(--deco-color);
-  font-size: 1rem;
+  font-size: calc(var(--scaler) * 1);
   text-decoration: underline;
   opacity: 0.6;
   cursor: pointer;
@@ -96,7 +97,7 @@
   right: 0%;
   bottom: -40%;
   width: 1px;
-  height: 11rem;
+  height: calc(var(--scaler) * 11);
   background-color: var(--secondary-color);
   opacity: 0.7;
 }
@@ -109,12 +110,63 @@
   font-family: var(--primary-font);
   color: var(--secondary-color);
   font-weight: 500;
-  font-size: 1.1rem;
-  margin: 2rem 2rem;
+  font-size: calc(var(--scaler) * 1.1);
+  margin: calc(var(--scaler) * 2) calc(var(--scaler) * 2);
 }
 .visionPadding {
   position: relative;
   z-index: -1;
   pointer-events: none;
   background-color: transparent;
+}
+
+.titles {
+  font-family: var(--primary-font);
+  color: var(--secondary-color);
+  font-size: calc(var(--scaler) * 2);
+  line-height: calc(var(--scaler) * 2);
+  width: calc(var(--scaler) * 25);
+  height: calc(var(--scaler) * 20);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+.titles h2 {
+  margin-top: calc(var(--scaler) * 2.3);
+  overflow: visible;
+}
+.titles h2 span {
+  color: var(--deco-color);
+}
+
+@media (max-width: 2000px) {
+  .container {
+    --scaler: 26px;
+  }
+}
+@media (max-width: 1700px) {
+  .container {
+    --scaler: 23px;
+  }
+}
+@media (max-width: 1000px) {
+  .container {
+    --scaler: 19px;
+  }
+}
+@media (max-width: 600px) {
+  .container {
+    --scaler: 18px;
+  }
+}
+@media (max-width: 500px) {
+  .imageCover {
+    visibility: visible;
+  }
+  .container {
+    --scaler: 16px;
+  }
+  .scroller {
+    left: calc(100% - var(--scaler) * 20); /*65*/
+  }
 }

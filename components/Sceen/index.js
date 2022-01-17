@@ -1,5 +1,7 @@
-import { Canvas } from '@react-three/fiber'
-import { Suspense, useEffect } from 'react'
+import { Canvas, render } from '@react-three/fiber'
+import { Suspense } from 'react'
+import {useState, useEffect} from 'react'
+
 
 
 import PlaneMesh from './plane/planeMesh'
@@ -15,6 +17,33 @@ export const scrollContextForward = createContext({
     isReady: false
 })
 
+const ImageMeshWrap = () => {
+    const [isMobile, setisMobile] = useState(false)
+
+
+    useEffect(() => {
+
+        if(window.innerWidth < 500 && !isMobile){
+            setisMobile(true)
+        }
+        if(window.innerWidth > 500 && isMobile){
+            setisMobile(false)
+        }
+    },[])
+
+    if(isMobile){
+        return <></>
+    }
+
+    return (
+        <Suspense fallback={null}>
+            <ImageMesh imageId="creativeImage" textureUrl="./vision/accessive.jpg"/>
+            <ImageMesh imageId="innovativeImage" textureUrl="./vision/creative.jpg"/>
+            <ImageMesh imageId="accessibleImage" textureUrl="./vision/innovative.jpg"/>
+        </Suspense>
+    )
+}
+
 
 export default function index() {
     const contextVal = useContext(localScrollTriggerContext)
@@ -27,11 +56,7 @@ export default function index() {
                     <Suspense fallback={null}>
                         <PlaneMesh />
                     </Suspense>
-                    <Suspense fallback={null}>
-                        <ImageMesh imageId="creativeImage" />
-                        <ImageMesh imageId="innovativeImage" />
-                        <ImageMesh imageId="accessibleImage" />
-                    </Suspense>
+                    <ImageMeshWrap />
                 </scrollContextForward.Provider>
             </Canvas>
         </div>

@@ -1,9 +1,8 @@
-import { createContext, useEffect, useRef, useState } from 'react'
+import { createContext, useEffect, useRef, useState, use } from 'react'
 
 import { gsap } from "gsap/dist/gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
-
 
 
 export const localScrollTriggerContext = createContext({
@@ -14,12 +13,13 @@ export const localScrollTriggerContext = createContext({
 
 export default function ScrollTriggerProvider({children}){
 
+    
+
     const scroll = useRef(null)
     const [isReady, setIsReady] = useState(false)
 
     useEffect(async()=>{
         if (typeof window === "undefined") return
-
 
         const LocomotiveScroll = await import("locomotive-scroll")
 
@@ -29,6 +29,48 @@ export default function ScrollTriggerProvider({children}){
         multiplier: 0.5,
         getSpeed:true,
         });
+
+        //handle refresh
+        const viewPortwidth = window.innerWidth
+        let isDefaultResizeFunc = true;
+
+        if(viewPortwidth < 500){
+            console.log(viewPortwidth)
+            ScrollTrigger.config({
+                autoRefreshEvents: "visibilitychange,DOMContentLoaded,load"
+            });
+            isDefaultResizeFunc = false;
+        }
+
+        const lastResizedHeight = window.innerHeight
+        const handleResize = (e) => {
+            viewPortwidth = window.innerWidth
+            if(viewPortwidth > 500 && !isDefaultResizeFunc){
+                console.log(viewPortwidth)
+                ScrollTrigger.config({
+                    autoRefreshEvents: "visibilitychange,DOMContentLoaded,load,resize"
+                });
+                ScrollTrigger.update()
+                isDefaultResizeFunc = true
+                return;
+            }
+
+           if(viewPortwidth < 500 && isDefaultResizeFunc){
+                ScrollTrigger.config({
+                    autoRefreshEvents: "visibilitychange,DOMContentLoaded,load"
+                });
+                ScrollTrigger.update()
+           }
+
+            const currentHeight = window.innerHeight
+            if(Math.abs(currentHeight-lastResizedHeight) < 30) return
+
+            lastResizedHeight = currentHeight;
+            ScrollTrigger.update()
+            
+
+        }
+        window.addEventListener("resize", handleResize)
 
         // each time Locomotive Scroll updates, tell ScrollTrigger to update too (sync positioning)
         scroll.current.on("scroll", () => {
@@ -50,6 +92,7 @@ export default function ScrollTriggerProvider({children}){
 
         return () => {
             scroll.current?.destroy()
+            window.removeEventListener("resize", handleResize)
             setIsReady(false)
         }
 

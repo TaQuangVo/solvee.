@@ -1,12 +1,14 @@
 import style from "./style.module.css"
 import { useEffect, useContext } from 'react';
 import { gsap } from "gsap/dist/gsap";
+import { useRouter } from 'next/router'
 
 import {localScrollTriggerContext} from "../../context/localScrollTriggerContext"
 
 export default function HeroSection() {
 
     const {scroll, isReady} = useContext(localScrollTriggerContext)
+    const router = useRouter()
 
     useEffect(()=>{
         if(!isReady) return
@@ -55,6 +57,10 @@ export default function HeroSection() {
       
       },[isReady]);
 
+      const handleOnClick = (href) => {
+        router.push(href)
+      }
+
     return (
         <section className={style.container + " " + "herocentionSection"} >
             <div className={style.intro + " " + "intro"} data-scroll>
@@ -81,7 +87,7 @@ export default function HeroSection() {
                 <div className={style.subSpace}></div>
                 <div className={style.subsWrap + " " + "heroWebsite" + " " +  "subscripAnimate"}>
                     <div><h3><span>Solvee</span>Solutions</h3></div>
-                    <div><h1><span>Solvee</span>-Vision</h1></div>
+                    <div><h1><span>Website</span>-Development</h1></div>
                     <div><p>
                     Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen. 
                     </p></div>
@@ -90,7 +96,7 @@ export default function HeroSection() {
                 <div className={style.subSpace}></div>
                 <div className={style.subsWrap + " " + "heroWebapp" + " " +  "subscripAnimate"} >
                     <div><h3><span>Solvee</span>Solutions</h3></div>
-                    <div><h1><span>Solvee</span>-Vision</h1></div>
+                    <div><h1><span>Web</span>-Application</h1></div>
                     <div><p>
                     Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen. 
                     </p></div>
@@ -99,7 +105,7 @@ export default function HeroSection() {
                 <div className={style.subSpace}></div>
                 <div className={style.subsWrap + " " + "heroDesign" + " " +  "subscripAnimate"} >
                     <div><h3><span>Solvee</span>Solutions</h3></div>
-                    <div><h1><span>Solvee</span>-Vision</h1></div>
+                    <div><h1><span>UI/UX</span>-Design</h1></div>
                     <div><p>
                     Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen. 
                     </p></div>
@@ -108,7 +114,7 @@ export default function HeroSection() {
                 <div className={style.subSpace}></div>
                 <div className={style.subsWrap + " " + "heroMobile" + " " +  "subscripAnimate"} >
                     <div><h3><span>Solvee</span>Solutions</h3></div>
-                    <div><h1><span>Solvee</span>-Vision</h1></div>
+                    <div><h1><span>Mobile</span>-Application</h1></div>
                     <div><p>
                     Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen. 
                     </p></div>
@@ -117,11 +123,11 @@ export default function HeroSection() {
                 <div className={style.subSpace}></div>
                 <div className={style.subsWrap + " " + "heroSystem" + " " +  "subscripAnimate"} >
                     <div><h3><span>Solvee</span>Solutions</h3></div>
-                    <div><h1><span>Solvee</span>-Vision</h1></div>
+                    <div><h1><span>System</span>-Development</h1></div>
                     <div><p>
                     Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen. 
                     </p></div>
-                    <div><button>Let cooperate</button></div>
+                    <div><button onClick={() => handleOnClick("/about")}>Let cooperate</button></div>
                 </div>
                 <div className={style.subSpace}></div>
                 <div className={style.trailing + " " + "heroTrailing"}></div>
